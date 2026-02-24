@@ -8,11 +8,7 @@ from scipy.signal import welch
 freq = 44100
 re_list1 = [] # list to store reynold's numbers
 rms_list = [] # list to store rms values
-energy_ratio_list = [] # list to store the energy ratios
-
-# just for testing
-print(f"{'File':<5} | {'Reynolds':<10} | {'RMS':<10} | {'Energy Ratio':<10}")
-print("-" * 50)
+energy_ratio_list = [] # list to store the energy ratios    
 
 # we introduce a target band in this, which is basically looking for a specific spike
 target_band = [200, 280] 
@@ -33,8 +29,8 @@ for file_num, reyn in re_map.items():
     # read the data
     df1 = pd.read_excel(filename, header=None)
 
-    # idk what we did here, gemini tell me
-    # what does iloc mean??
+    # here we use iloc ( integer location)
+    # it just grabs data taking row and column number and params
     signal = df1.iloc[:, 0].to_numpy()
 
     # calcualte the rms 
@@ -45,7 +41,7 @@ for file_num, reyn in re_map.items():
     
     # now we calculate the energy ratio
     # we find the indices for our target band
-    idx_band = np.where((freqs >= target_band[0]) & (freqs <= target_band[1]))
+    idx_band = np.where((freqs >= target_band[0]) & (freqs <= target_band[1])) # no.where just looks for specific numbers
 
     # sum of energy in the band:
     energy_in_band = np.sum(psd[idx_band])
@@ -80,3 +76,9 @@ plt.annotate('Onset of TAI', xy=(3653, 0.05), xytext=(2500, 0.2),
 
 plt.tight_layout()
 plt.show()
+
+"""
+The energy ratio should be around 0.05 to 0.5
+any ratio around 0.9 or around 1 is just basically 
+TAI in disguise
+"""

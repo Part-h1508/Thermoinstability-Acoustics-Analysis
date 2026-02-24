@@ -52,3 +52,18 @@ plt.xlim(0, 500) # zoom in on the low frequencies where TAI lives
 plt.grid(True, which="both", ls="-", alpha=0.5)
 plt.tight_layout()
 plt.show()
+
+"""
+
+from the graph we can tell that:
+1) The dark blue line at bottom is flat and low, its background nose which is just flame burning 
+2) the orange, red, red green lines are entering the transition mode as the Re is increased
+3) the top lines (Cyan) is a screaming image of the last tone, which is TAI frequency
+
+
+upon examining, the frequency indiacting the onset of TAI is between 230-240Hz
+235 to be prescise
+
+If we look closely, there is another peak at around 460Hz indicating harmonic frequency
+which is valid with the primary one (230x2 = 460)
+"""
