@@ -21,7 +21,7 @@ re_map = {
     45: 4697.55,
     47: 4906.33, 
     50: 5219.50, 
-    53: 5532.67
+    53: 5532.67      
 }
 
 # now we loop thru every number in the 

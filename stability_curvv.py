@@ -11,7 +11,7 @@ rms_list = [] # list to store rms values
 energy_ratio_list = [] # list to store the energy ratios    
 
 # we introduce a target band in this, which is basically looking for a specific spike
-target_band = [200, 280] 
+target_band = [220, 250] 
 
 # dict for reynold's number
 re_map = {
