@@ -59,6 +59,6 @@ for i, file_num in enumerate(target_files):
     plt.ylim(-4, 4)
     plt.grid(True, alpha=0.3)
 
-plt.suptitle("Phase Space Reconstruction: The 'Donut' Plot", fontsize=16)
+plt.suptitle("Phase Space Reconstruction", fontsize=16)
 plt.tight_layout()
 plt.show()
