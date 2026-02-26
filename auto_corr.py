@@ -19,27 +19,24 @@ plt.figure(figsize=(12, 6))
 
 # now we dig thru the our target files
 for i, file_num in enumerate(target_files):
-    # set the file name
     filename = str(file_num) + ".xlsx"
     
-    # open the data frame
+    # TIP: If you convert your .xlsx to .csv, this line will be 10x faster
     df = pd.read_excel(filename, header=None)
-
-    # we look for target values in our opened files
     signal = df.iloc[:, 0].to_numpy()
     
-    # we normalize the signal
+    # Normalize
     signal = signal - np.mean(signal)
     
-    # now we calculate the autocorr map
-    # "mode='full'" compares the signal to itself at every possible time shift
-    result = np.correlate(signal, signal, mode='full')
+    # FAST AUTOCORRELATION (The "Wiener-Khinchin" theorem method)
+    n = len(signal)
+    fvi = np.fft.fft(signal, n=2*n) # Zero-padding for better accuracy
+    acf = np.fft.ifft(fvi * np.conj(fvi)).real
+    acf = acf[:n] # Keep positive lags
+    result = acf / acf[0] # Scale 0 to 1
     
-    # keep only the positive lags (the second half of the array)
-    result = result[result.size // 2:]
-    
-    # normalize so the peak at Lag 0 is always 1.0 (100% correlation)
-    result = result / result[0]
+    # ... rest of your plotting code ...
+
     
     # now we create a time lag vector 
     # we want to see the first 0.1 seconds of memory

@@ -62,3 +62,6 @@ for i, file_num in enumerate(target_files):
 plt.suptitle("Phase Space Reconstruction", fontsize=16)
 plt.tight_layout()
 plt.show()
+
+# plt.plot ---> 7.66s
+# plt.scatter ---> 
