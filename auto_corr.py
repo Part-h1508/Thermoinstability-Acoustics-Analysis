@@ -1,3 +1,9 @@
+"""
+Devided to implement WK thoerem (Weiner-Khinchin) which states that PSD of wide-sense stationary
+random process is exactly ewual to FT of autocorrelation of that function. 
+so we can compute the autocorrelation by doing an inverse FT of the power spectrum.
+"""
+
 # imports 
 import pandas as pd
 import numpy as np
